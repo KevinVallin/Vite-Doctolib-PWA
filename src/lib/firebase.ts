@@ -18,7 +18,7 @@ export const setupFirebase = () => {
       appId: import.meta.env.VITE_FIREBASE_APPID,
     });
   } catch (error) {
-    console.error({error})
+    console.error({ error })
   }
 };
 
@@ -28,28 +28,19 @@ let storage: ReturnType<typeof getStorage>;
 
 export const useAuth = () => {
   auth = getAuth(firebaseApp);
-  if (useEmulator()) {
-    connectAuthEmulator(auth, 'http://localhost:9099');
-  }
   return auth;
 };
 
 export const useFirestore = () => {
   if (!firestore) {
     firestore = getFirestore();
-    if (useEmulator()) {
-      connectFirestoreEmulator(firestore, 'localhost', 8080);
-    }
   }
   return firestore;
 };
 
 export const useStorage = () => {
-  if (!storage) {
+  if (!firestore) {
     storage = getStorage();
-    if (useEmulator()) {
-      connectStorageEmulator(storage, 'localhost', 9199);
-    }
   }
   return storage;
 };
