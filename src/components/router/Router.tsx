@@ -6,15 +6,15 @@ const Loading = () => <p className="p-4 w-full h-full text-center">Loading...</p
 
 const IndexScreen = lazy(() => import('~/components/screens/Index'));
 const Page404Screen = lazy(() => import('~/components/screens/404'));
+const RmaScreen = lazy(() => import('~/components/screens/Rma'));
+
 
 function Layout() {
   return (
     <div>
-      <nav className="p-4 flex items-center justify-between">
-        <div className="navbar bg-base-100">
-          <a className="btn btn-ghost normal-case text-xl">PWA-Doctolib-User</a>
+        <div className="navbar bg-base-100 min-w-screen dark:bg-slate-800">
+          <a className="btn btn-ghost normal-case text-xl dark:text-white">PWA-Doctolib-User</a>
         </div>
-      </nav>
       <Outlet />
     </div>
   );
@@ -41,6 +41,10 @@ const InnerRouter = () => {
         {
           path: '*',
           element: <Page404Screen />,
+        },
+        {
+          path: '*',
+          element: <RmaScreen />,
         },
       ],
     },

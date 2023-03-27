@@ -15,7 +15,8 @@ export const SignInButton = () => {
     <button
       onClick={handleClick}
       type="button"
-      className="btn btn-primary normal-case min-w-60"
+
+      className="btn normal-case min-w-60 bg-gradient-to-br from-cyan-700 to-orange-500 "
     >
       Sign In With Google
     </button>
