@@ -15,30 +15,30 @@ function Rma() {
     const [isOpen, setIsOpen] = useState(true);
     const completeButtonRef = useRef(null);
     const [events, setEvents] = useState<[] | null>(null)
-  
+
     useEffect(() => {
         if (state.state === 'SIGNED_IN') {
-          console.log("test")
-          getDocs(collection(firestore, 'event')).then((qs) => {
-            const evts: Event[] = []
-            const [events, setEvents] = useState<Event[] | null>(null);
-            qs.forEach(res => evts.push(res.data() as Event))
-            setEvents(evts);
-            console.log(JSON.stringify(evts))
-          }).catch((error) => {
-            const errorCode = error.code
-            const errorMessage = error.message
-            console.log("$error")
-            navigator.vibrate([
-              100, 30, 100, 30, 100, 30, 200, 30, 200, 30, 200, 30, 100, 30, 100, 30, 100,
-            ]);
-          })
-    
-        }
-    
-      }, [])
+            console.log("test")
+            getDocs(collection(firestore, 'event')).then((qs) => {
+                const evts: Event[] = []
+                const [events, setEvents] = useState<Event[] | null>(null);
+                qs.forEach(res => evts.push(res.data() as Event))
+                setEvents(evts);
+                console.log(JSON.stringify(evts))
+            }).catch((error) => {
+                const errorCode = error.code
+                const errorMessage = error.message
+                console.log("$error")
+                navigator.vibrate([
+                    100, 30, 100, 30, 100, 30, 200, 30, 200, 30, 200, 30, 100, 30, 100, 30, 100,
+                ]);
+            })
 
-      
+        }
+
+    }, [])
+
+
     return (
         < >
             <div className="min-h-screen dark:bg-slate-800 py-6 flex flex-col justify-center sm:py-12">
@@ -49,7 +49,7 @@ function Rma() {
                     <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
                         <div className="max-w-md mx-auto">
                             <div>
-                                <h1 className="text-2xl font-semibold">Welcome to Doctolib</h1>
+                                <h1 className="text-2xl font-semibold">Prendre un rendez-vous</h1>
                             </div>
                             <div className="divide-y divide-gray-200">
                                 <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
@@ -58,7 +58,7 @@ function Rma() {
                                     <div className="relative">
                                     </div>
                                     <div className="relative">
-                                        {state.state === 'UNKNOWN' ? null : state.state === 'SIGNED_OUT' ? <SignInButton /> : <SignOutButton />}
+                                        <button className="btn normal-case min-w-60 bg-gradient-to-br from-cyan-700 to-orange-500"> Validez </button>
                                     </div>
                                 </div>
                             </div>

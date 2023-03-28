@@ -16,6 +16,7 @@ function Index() {
   const [isOpen, setIsOpen] = useState(true);
   const completeButtonRef = useRef(null);
   const [events, setEvents] = useState<[] | null>(null)
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (state.state === 'SIGNED_IN') {
@@ -58,13 +59,10 @@ function Index() {
                     {state.state === 'SIGNED_IN' && <p className="relative">{state.currentUser.uid}</p>}
                   </div>
                   <div className="relative">
-                    <button className="relative" onClick={() => setIsOpen(true)}>Display Dialog</button>
+                    <button className="relative btn normal-case min-w-60 bg-gradient-to-br from-cyan-700 to-orange-500" onClick={() => navigate("/myappt")}>Mes rendez-vous</button>
                   </div>
                   <div className="relative">
-                    {state.state === 'UNKNOWN' ? null : state.state === 'SIGNED_OUT' ? <SignInButton /> : <SignOutButton /> && <div className="relative">
-                      <button className="relative" > Prendre un rendez-vous </button>
-                    </div>
-                    }
+                    <button className="relative btn normal-case min-w-60 bg-gradient-to-br from-cyan-700 to-orange-500" onClick={() => navigate("/rma")}> Prendre un rendez-vous </button>
                   </div>
                 </div>
               </div>
