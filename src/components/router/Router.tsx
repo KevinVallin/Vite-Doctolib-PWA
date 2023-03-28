@@ -13,9 +13,17 @@ const MyApptScreen = lazy(() => import('~/components/screens/Rma'));
 function Layout() {
   return (
     <div>
+<<<<<<< HEAD
         <div className="navbar bg-base-100 min-w-screen dark:bg-slate-800">
           <a className="btn btn-ghost normal-case text-xl dark:text-white">PWA-Doctolib-User</a>
         </div>
+=======
+      <nav className="p-4 flex items-center justify-between">
+        <div className="navbar bg-base-100">
+          <a className="btn btn-ghost normal-case text-xl">PWA-Doctolib-User</a>
+        </div>
+      </nav>
+>>>>>>> 317c1b4bd696ea0737aa4329fe73dfed59d050f9
       <Outlet />
     </div>
   );

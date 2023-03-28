@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import { Dialog } from '@headlessui/react';
+>>>>>>> 317c1b4bd696ea0737aa4329fe73dfed59d050f9
 import { DocumentData, Firestore, QuerySnapshot } from 'firebase/firestore';
 import { useEffect, useRef, useState } from 'react';
 import { useAuthState } from '~/components/contexts/UserContext';
@@ -6,8 +10,11 @@ import { SignOutButton } from '~/components/domain/auth/SignOutButton';
 import { Head } from '~/components/shared/Head';
 import { useFirestore } from '~/lib/firebase';
 import { collection, getDocs } from 'firebase/firestore';
+<<<<<<< HEAD
 import { Navigate, useNavigate } from 'react-router-dom';
 import { Router } from "~/components/router/Router";
+=======
+>>>>>>> 317c1b4bd696ea0737aa4329fe73dfed59d050f9
 
 function Index() {
 
@@ -15,6 +22,7 @@ function Index() {
   const firestore = useFirestore();
   const [isOpen, setIsOpen] = useState(true);
   const completeButtonRef = useRef(null);
+<<<<<<< HEAD
   const [events, setEvents] = useState<[] | null>(null)
   const navigate = useNavigate();
 
@@ -39,6 +47,22 @@ function Index() {
     }
 
   }, [])
+=======
+  const [events , setEvents] = useState<[] | null>(null)
+
+  useEffect(() => {
+    if (state.state === 'SIGNED_IN'){
+      console.log("test")
+      getDocs(collection(firestore, 'event')).then((qs) => {
+        const evts = []
+        qs.forEach(res => evts.push(res.data()))
+        setEvents(evts);
+      })
+
+    } 
+
+  },[])
+>>>>>>> 317c1b4bd696ea0737aa4329fe73dfed59d050f9
 
   return (
     <>
@@ -67,6 +91,7 @@ function Index() {
                 </div>
               </div>
             </div>
+<<<<<<< HEAD
           </div>
         </div>
       </div>
@@ -82,6 +107,11 @@ function Index() {
           <p className='m-8' key={event}>
             {JSON.stringify(event)}
           </p>)}
+=======
+            {events && events.map(event => <p className='m-8' key={event.uid}>
+              {JSON.stringify(event)}
+            </p>) }
+>>>>>>> 317c1b4bd696ea0737aa4329fe73dfed59d050f9
       </div>
     </>
   );
